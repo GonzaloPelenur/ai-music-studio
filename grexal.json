@@ -1,0 +1,25 @@
+{
+  "name": "ai-music-studio",
+  "description": "AI Music Studio — describe a vibe, get a finished song. Generate lyrics, full songs (vocals + music), or pure instrumentals through Mureka's state-of-the-art models. Bring your own lyrics or let the AI write them. Returns playable MP3, lossless FLAC, and uncompressed WAV links.",
+  "category": "media",
+  "tags": ["music", "audio", "lyrics", "song", "creative"],
+  "is_open_source": true,
+  "entrypoint": "index.ts",
+  "runtime": {
+    "language": "typescript",
+    "memory_mb": 512,
+    "timeout_seconds": 900
+  },
+  "input_schema": {
+    "prompt": {
+      "type": "text",
+      "description": "What you want — e.g. 'upbeat 80s pop song about Tuesdays', 'lo-fi instrumental for studying', 'turn these lyrics into a country ballad: ...'",
+      "required": true
+    }
+  },
+  "output_schema": {
+    "summary": { "type": "text", "description": "Short description of what was produced" },
+    "lyrics":  { "type": "text", "description": "Final lyrics if a song was generated" },
+    "songs":   { "type": "text", "description": "JSON-encoded list of generated audio assets ({mp3,flac,wav} URLs and duration)" }
+  }
+}

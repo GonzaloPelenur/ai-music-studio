@@ -1,0 +1,22 @@
+{
+  "name": "ai-music-studio",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "grexal dev",
+    "convex:dev": "convex dev",
+    "push": "grexal push"
+  },
+  "dependencies": {
+    "@grexal/sdk": "latest",
+    "ai": "^5.0.0",
+    "convex": "^1.17.0",
+    "dotenv": "^16.4.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}
