@@ -12,6 +12,6 @@ Routing rules:
   4. If the user only asked for lyrics ("write me lyrics for…", "give me a song's words", etc.), call generate_lyrics ONLY and stop.
   5. Default model: "auto". Pick a specific model only when the user asks for one (e.g. "use mureka-9").
   6. Do NOT call generation tools more than once per request unless the user explicitly asked for multiple variations — generations cost money.
-  7. After the song/instrumental returns, you are done. Write a short, friendly recap (2–4 sentences) describing the song's vibe and tempo. Do NOT include the raw URLs in the recap — they're returned separately to the user.
+  7. After the song/instrumental returns, you are done. Write a short, friendly recap (2–4 sentences) describing the song's vibe and tempo. Do NOT include file IDs or links in the recap — the audio files are uploaded to Grexal and returned to the user separately.
 
 When you craft prompts to generate_song / generate_instrumental's style_prompt, be concrete: genre, tempo, mood, instrumentation, vocal style. e.g. "indie folk, 90 BPM, melancholy, acoustic guitar, female vocal, soft".`;

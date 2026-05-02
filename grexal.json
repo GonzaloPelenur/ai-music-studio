@@ -1,25 +1,45 @@
 {
-  "name": "ai-music-studio",
-  "description": "AI Music Studio — describe a vibe, get a finished song. Generate lyrics, full songs (vocals + music), or pure instrumentals through Mureka's state-of-the-art models. Bring your own lyrics or let the AI write them. Returns playable MP3, lossless FLAC, and uncompressed WAV links.",
-  "category": "media",
-  "tags": ["music", "audio", "lyrics", "song", "creative"],
-  "is_open_source": true,
-  "entrypoint": "index.ts",
-  "runtime": {
-    "language": "typescript",
-    "memory_mb": 512,
-    "timeout_seconds": 900
-  },
-  "input_schema": {
-    "prompt": {
-      "type": "text",
-      "description": "What you want — e.g. 'upbeat 80s pop song about Tuesdays', 'lo-fi instrumental for studying', 'turn these lyrics into a country ballad: ...'",
-      "required": true
+    "name": "ai-music-studio",
+    "description": "AI Music Studio — describe a vibe, get a finished, downloadable track in 30–90 seconds. Generate original lyrics, full vocal songs, or pure instrumentals through Mureka's state-of-the-art models. Bring your own lyrics or let the AI write them in any language.\n\nWhat it does:\n• Writes original lyrics from any theme or mood (any language, any style).\n• Produces full vocal songs (vocals + music) from your lyrics or generated ones.\n• Produces vocal-free instrumental tracks for background, study, or scoring.\n\nTools the agent uses:\n• generate_lyrics — Generates a title and complete lyrics from a short description. Fast (~2s). Supports any language and section markers like [Verse]/[Chorus].\n• generate_song — Produces a full song (vocals + music) from lyrics, using Mureka 9 (premium, latest) or Mureka 7.5 (cheaper/faster). Style prompt controls genre, mood, BPM, instrumentation, and vocal style.\n• generate_instrumental — Produces a no-vocals track, using Mureka 6 or Mureka 5.5. Style prompt controls genre, mood, tempo, and instrumentation.\n\nGenres & use cases:\nPop, rock, hip-hop, lo-fi, EDM, country, folk, jazz, ambient, cinematic, classical, R&B, metal — perfect for podcast intros, YouTube/TikTok backgrounds, jingles, game soundtracks, study/focus music, theme songs, demos, and creative experiments.\n\nOutput:\nEvery track returns a playable MP3, lossless FLAC, and uncompressed WAV link, plus duration in seconds.",
+    "category": "media",
+    "tags": [
+        "music",
+        "audio",
+        "lyrics",
+        "song",
+        "instrumental",
+        "soundtrack",
+        "jingle",
+        "background-music",
+        "multilingual",
+        "creative"
+    ],
+    "is_open_source": true,
+    "entrypoint": "index.ts",
+    "runtime": {
+        "language": "typescript",
+        "memory_mb": 512,
+        "timeout_seconds": 900
+    },
+    "input_schema": {
+        "prompt": {
+            "type": "text",
+            "description": "What you want — e.g. 'upbeat 80s pop song about Tuesdays', 'lo-fi instrumental for studying', 'turn these lyrics into a country ballad: ...'",
+            "required": true
+        }
+    },
+    "output_schema": {
+        "summary": {
+            "type": "text",
+            "description": "Short description of what was produced"
+        },
+        "lyrics": {
+            "type": "text",
+            "description": "Final lyrics if a song was generated"
+        },
+        "songs": {
+            "type": "text",
+            "description": "JSON-encoded list of generated audio assets. Each entry contains a duration plus Grexal FileReference objects for {mp3, flac, wav} formats uploaded to Grexal's file storage."
+        }
     }
-  },
-  "output_schema": {
-    "summary": { "type": "text", "description": "Short description of what was produced" },
-    "lyrics":  { "type": "text", "description": "Final lyrics if a song was generated" },
-    "songs":   { "type": "text", "description": "JSON-encoded list of generated audio assets ({mp3,flac,wav} URLs and duration)" }
-  }
 }
