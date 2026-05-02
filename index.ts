@@ -31,9 +31,13 @@ export default async function run(ctx: AgentContext) {
 
   await ctx.progress(1.0);
 
+  const track = collected.songs[0];
   return {
     summary: text,
     lyrics: collected.lyrics ?? "",
-    songs: JSON.stringify(collected.songs),
+    audio_mp3: track?.mp3,
+    audio_flac: track?.flac,
+    audio_wav: track?.wav,
+    duration_seconds: track?.duration_seconds,
   };
 }

@@ -37,9 +37,21 @@
             "type": "text",
             "description": "Final lyrics if a song was generated"
         },
-        "songs": {
-            "type": "text",
-            "description": "JSON-encoded list of generated audio assets. Each entry contains a duration plus Grexal FileReference objects for {mp3, flac, wav} formats uploaded to Grexal's file storage."
+        "audio_mp3": {
+            "type": "file",
+            "description": "Generated track (MP3, playable in any browser)"
+        },
+        "audio_flac": {
+            "type": "file",
+            "description": "Generated track (FLAC, lossless)"
+        },
+        "audio_wav": {
+            "type": "file",
+            "description": "Generated track (WAV, uncompressed)"
+        },
+        "duration_seconds": {
+            "type": "number",
+            "description": "Length of the generated track in seconds"
         }
     }
 }
